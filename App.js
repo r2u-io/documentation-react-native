@@ -1,73 +1,64 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
-import React from 'react';
+import React, {useState} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
   ScrollView,
   View,
   Text,
-  StatusBar,
+  Button,
 } from 'react-native';
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
+import * as WebBrowser from 'expo-web-browser';
+
+import R2U from '@r2u/react-native-ar-sdk';
+import Webview from 'react-native-webview';
+
+const customerId = '5e8e7580404328000882f4ae';
+const sku = 'RE000001';
 
 const App: () => React$Node = () => {
+  const [hasInit, setHasInit] = useState(false);
+  const [url3D, setUrl3D] = useState('');
+  const [urlAR, setUrlAR] = useState('');
+
+  (async () => {
+    if (hasInit) {
+      return;
+    }
+    setHasInit(true);
+    await R2U.init({customerId});
+
+    if (!(await R2U.isActive(sku))) {
+      return;
+    }
+
+    setUrl3D(await R2U.get3DUrl(sku));
+    setUrlAR(await R2U.getARUrl(sku));
+  })();
+
   return (
     <>
-      <StatusBar barStyle="dark-content" />
       <SafeAreaView>
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"
           style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
           <View style={styles.body}>
             <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
+              <Text style={styles.h1}>React Native AR SDK</Text>
             </View>
             <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
+              {urlAR ? (
+                <Button
+                  title="Veja em 3D"
+                  onPress={() => WebBrowser.openBrowserAsync(urlAR)}
+                />
+              ) : null}
             </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
           </View>
         </ScrollView>
       </SafeAreaView>
+      {url3D ? <Webview style={styles.webview} source={{uri: url3D}} /> : null}
     </>
   );
 };
@@ -76,9 +67,10 @@ const styles = StyleSheet.create({
   scrollView: {
     backgroundColor: Colors.lighter,
   },
-  engine: {
-    position: 'absolute',
-    right: 0,
+  h1: {
+    fontSize: 30,
+    fontWeight: '700',
+    color: Colors.black,
   },
   body: {
     backgroundColor: Colors.white,
@@ -87,27 +79,15 @@ const styles = StyleSheet.create({
     marginTop: 32,
     paddingHorizontal: 24,
   },
-  sectionTitle: {
+  h3: {
     fontSize: 24,
     fontWeight: '600',
     color: Colors.black,
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
+  webview: {
+    marginTop: 32,
+    flex: null,
+    height: 300,
   },
 });
 
