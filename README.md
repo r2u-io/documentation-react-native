@@ -13,4 +13,4 @@ React Native Sample App para integração com o SDK de Realidade Aumentada
 | Dependência | Função |
 |------------ | ------ |
 | [`expo-web-browser`](https://docs.expo.io/versions/latest/sdk/webbrowser/) | AR |
-| [react-native-webview](https://github.com/react-native-community/react-native-webview) | 3D |
+| [`react-native-webview`](https://github.com/react-native-community/react-native-webview) | 3D |
