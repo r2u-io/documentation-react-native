@@ -6,16 +6,17 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
+    "postinstall": "sed -e 's/lib\\/WebView/src\\/WebView/' -i.bak node_modules/react-native-webview/index.js",
     "test": "jest",
     "lint": "eslint ."
   },
   "dependencies": {
+    "@r2u/react-native-ar-sdk": "^0.0.1",
     "expo-web-browser": "^8.3.1",
     "react": "16.13.1",
     "react-native": "0.63.2",
     "react-native-unimodules": "^0.10.1",
-    "react-native-webview": "react-native-community/react-native-webview",
-    "react-native-ar-sdk": "@r2u/react-native-ar-sdk"
+    "react-native-webview": "react-native-community/react-native-webview"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
