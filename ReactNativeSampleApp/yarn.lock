@@ -997,9 +997,9 @@
     chalk "^3.0.0"
 
 "@r2u/react-native-ar-sdk@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@r2u/react-native-ar-sdk/-/react-native-ar-sdk-0.1.0.tgz#b479f22655db59f440bcb20b7d459ba6cb82d36a"
-  integrity sha512-eNdjkKXAxIXG5RzdK/7FeRRz+q9rKEnrwxXgPY9yhQTqK8QrQLNGi3i0THxRqzTmUw5kx82eZ/rFQnFXn5fH7w==
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@r2u/react-native-ar-sdk/-/react-native-ar-sdk-0.1.1.tgz#ab0bdac468c786ba2b518a54d38aea31be597566"
+  integrity sha512-QCyznS+ZkD3+PJvYlqFnQDNr/kWVtXFQ5wR8nrjoxf3p/eMMGbZK2CRInAuUg4//bhSh4MkTshPVpTGgcy5KWg==
 
 "@react-native-community/cli-debugger-ui@^4.9.0":
   version "4.9.0"
