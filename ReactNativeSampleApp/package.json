@@ -12,10 +12,8 @@
   },
   "dependencies": {
     "@r2u/react-native-ar-sdk": "^0.1.0",
-    "expo-web-browser": "^8.3.1",
     "react": "16.13.1",
     "react-native": "0.63.2",
-    "react-native-unimodules": "^0.10.1",
     "react-native-webview": "react-native-community/react-native-webview"
   },
   "devDependencies": {
