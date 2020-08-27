@@ -7,12 +7,10 @@ import {
   Text,
   Button,
 } from 'react-native';
-
 import {Colors} from 'react-native/Libraries/NewAppScreen';
-import * as WebBrowser from 'expo-web-browser';
 
-import R2U from '@r2u/react-native-ar-sdk';
 import Webview from 'react-native-webview';
+import R2U from '@r2u/react-native-ar-sdk';
 
 const customerId = '5e8e7580404328000882f4ae';
 const sku = 'RE000001';
@@ -20,21 +18,19 @@ const sku = 'RE000001';
 const App: () => React$Node = () => {
   const [hasInit, setHasInit] = useState(false);
   const [url3D, setUrl3D] = useState('');
-  const [urlAR, setUrlAR] = useState('');
 
   (async () => {
     if (hasInit) {
       return;
     }
-    setHasInit(true);
     await R2U.init({customerId});
+    setHasInit(true);
 
     if (!(await R2U.isActive(sku))) {
       return;
     }
 
     setUrl3D(await R2U.get3DUrl(sku));
-    setUrlAR(await R2U.getARUrl(sku));
   })();
 
   return (
@@ -48,12 +44,9 @@ const App: () => React$Node = () => {
               <Text style={styles.h1}>React Native AR SDK</Text>
             </View>
             <View style={styles.sectionContainer}>
-              {urlAR ? (
-                <Button
-                  title="Veja em 3D"
-                  onPress={() => WebBrowser.openBrowserAsync(urlAR)}
-                />
-              ) : null}
+              {
+                hasInit && <Button title="Veja em 3D" onPress={() => R2U.openAR(sku, true)}/>
+              }
             </View>
           </View>
         </ScrollView>
