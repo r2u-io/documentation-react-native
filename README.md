@@ -86,7 +86,7 @@ const App: () => React$Node = () => {
           hasInit && <Button title="Veja em 3D" onPress={() => R2U.openAR(sku, true)}/>
         }
         </View>
-        {url3D ? <Webview style={styles.webview} source={{uri: url3D}} /> : null}
+        {url3D ? <Webview source={{uri: url3D}} /> : null}
       </View>
     </>
   );
