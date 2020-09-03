@@ -36,7 +36,7 @@ Adicione o módulo no projeto
 
 ```
 # usando npm
-npm add @r2u/react-native-ar-sdk
+npm install @r2u/react-native-ar-sdk
 
 # usando yarn
 yarn add @r2u/react-native-ar-sdk
