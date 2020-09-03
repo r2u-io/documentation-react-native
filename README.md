@@ -79,6 +79,7 @@ const App: () => React$Node = () => {
 
   return (
     <>
+      <View>
         <View>
         {
           hasInit && <Button title="Veja em 3D" onPress={() => R2U.openAR(sku, true)}/>
