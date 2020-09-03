@@ -53,6 +53,7 @@ Etapas adicionais
 // outras bibliotecas de estado também podem ser utilizadas para fazer a inicialização do módulo
 // por simplicidade, esta demonstração utiliza react hooks
 import React, {useState} from 'react';
+import {View, Button} from 'react-native';
 import Webview from 'react-native-webview';
 import R2U from '@r2u/react-native-ar-sdk';
 
