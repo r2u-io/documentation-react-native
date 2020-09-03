@@ -32,8 +32,65 @@ Na pasta [**ReactNativeSampleApp**](./ReactNativeSampleApp/) é possível ver um
 
 ### Instalação 
 
+Adicione o módulo no projeto
+
+```
+# usando npm
+npm add @r2u/react-native-ar-sdk
+
+# usando yarn
+yarn add @r2u/react-native-ar-sdk
+```
+
+Etapas adicionais
+
 - **iOS**: `pod install`
 - **Android**: Não há passos adicionais
+
+### Uso
+
+```tsx
+// outras bibliotecas de estado também podem ser utilizadas para fazer a inicialização do módulo
+// por simplicidade, esta demonstração utiliza react hooks
+import React, {useState} from 'react';
+import Webview from 'react-native-webview';
+import R2U from '@r2u/react-native-ar-sdk';
+
+const customerId = '5e8e7580404328000882f4ae';
+const sku = 'RE000001';
+
+const App: () => React$Node = () => {
+  const [hasInit, setHasInit] = useState(false);
+  const [url3D, setUrl3D] = useState('');
+
+  (async () => {
+    if (hasInit) {
+      return;
+    }
+    await R2U.init({customerId});
+    setHasInit(true);
+
+    if (!(await R2U.isActive(sku))) {
+      return;
+    }
+
+    setUrl3D(await R2U.get3DUrl(sku));
+  })();
+
+  return (
+    <>
+        <View>
+        {
+          hasInit && <Button title="Veja em 3D" onPress={() => R2U.openAR(sku, true)}/>
+        }
+        </View>
+        {url3D ? <Webview style={styles.webview} source={{uri: url3D}} /> : null}
+      </View>
+    </>
+  );
+};
+```
+
 
 ### Requisitos
 
