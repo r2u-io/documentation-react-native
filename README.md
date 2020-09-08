@@ -44,8 +44,44 @@ yarn add @r2u/react-native-ar-sdk
 
 Etapas adicionais
 
-- **iOS**: `pod install`
-- **Android**: Não há passos adicionais
+##### iOS
+
+1. Inclua a permissão de acesso a câmera no seu [`Info.plist`](https://developer.apple.com/documentation/arkit/verifying_device_support_and_user_permission#2970474)
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "___">
+<plist version="1.0">
+<dict>
+  <key>NSCameraUsageDescription</key>
+  <string>Camera usada para visualização de produtos em Realidade Aumentada</string>
+  ...
+</dict>
+</plist>
+```
+
+2. Instale o React Native pod
+
+```
+cd ios
+pod install
+```
+
+##### Android
+
+1. Inclua a permissão de acesso a câmera no seu [`AndroidManifest.xml`](https://developers.google.com/ar/develop/java/enable-arcore#ar_optional_apps)
+
+```xml
+<uses-permission android:name="android.permission.CAMERA" />
+
+<application …>
+    ...
+
+    <!-- "AR Optional" app, contains non-AR features that can be used when
+         "Google Play Services for AR" (ARCore) is not available. -->
+    <meta-data android:name="com.google.ar.core" android:value="optional" />
+</application>
+```
 
 ### Uso
 
