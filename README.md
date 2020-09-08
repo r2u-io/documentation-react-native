@@ -44,7 +44,7 @@ yarn add @r2u/react-native-ar-sdk
 
 Etapas adicionais
 
-##### iOS
+#### iOS
 
 1. Inclua a permissão de acesso a câmera no seu [`Info.plist`](https://developer.apple.com/documentation/arkit/verifying_device_support_and_user_permission#2970474)
 
@@ -67,7 +67,7 @@ cd ios
 pod install
 ```
 
-##### Android
+#### Android
 
 1. Inclua a permissão de acesso a câmera no seu [`AndroidManifest.xml`](https://developers.google.com/ar/develop/java/enable-arcore#ar_optional_apps)
 
