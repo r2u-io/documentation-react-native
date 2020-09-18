@@ -138,7 +138,7 @@ const App: () => React$Node = () => {
 };
 ```
 
-### Problemas frequentes
+### Possíveis problemas
 
 ##### (Android) Missing 'package' key attribute on element package at [com.google.ar:core:1.19.0] AndroidManifest.xml
 
