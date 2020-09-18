@@ -137,3 +137,9 @@ const App: () => React$Node = () => {
   );
 };
 ```
+
+### Problemas frequentes
+
+##### (Android) Missing 'package' key attribute on element package at [com.google.ar:core:1.19.0] AndroidManifest.xml
+
+Esse problema ocorre em razão de uma [versão antiga do gradle](https://android-developers.googleblog.com/2020/07/preparing-your-build-for-package-visibility-in-android-11.html) que não suporta o ARCore, o SDK de Realidade Aumentada do Google para Android. Basta atualizar para a versão 4.1 ou realizar o processo indicado para versões anteriores.
