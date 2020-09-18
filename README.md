@@ -8,7 +8,7 @@ A integração do SDK de Realidade Aumentada da R2U para React Native é feita a
 interface R2U {
   init: (params: {customerId: string}) => Promise<void>;
   isActive: (sku: string) => Promise<boolean>;
-  deviceSupportsAR: () => boolean;
+  deviceSupportsAR: () => Promise<boolean>;
   openAR: (sku: string, resize: boolean) => Promise<void>;
   get3DUrl: (sku: string) => Promise<string>;
 }
