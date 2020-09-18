@@ -18,11 +18,13 @@ const sku = 'RE000001';
 const App: () => React$Node = () => {
   const [hasInit, setHasInit] = useState(false);
   const [url3D, setUrl3D] = useState('');
+  const [deviceSupportsAR, setDeviceSupportsAR] = useState(false);
 
   (async () => {
     if (hasInit) {
       return;
     }
+    setDeviceSupportsAR(await R2U.deviceSupportsAR());
     await R2U.init({customerId});
     setHasInit(true);
 
@@ -45,7 +47,12 @@ const App: () => React$Node = () => {
             </View>
             <View style={styles.sectionContainer}>
               {
-                hasInit && <Button title="Veja em 3D" onPress={() => R2U.openAR(sku, true)}/>
+                hasInit &&
+                  <Button
+                    title={deviceSupportsAR ? "Veja em Realidade Aumentada" : "Dispositivo não suporta Realidade Aumentada"}
+                    disabled={!deviceSupportsAR}
+                    onPress={() => R2U.openAR(sku, true)}
+                  />
               }
             </View>
           </View>
