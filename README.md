@@ -8,6 +8,7 @@ A integração do SDK de Realidade Aumentada da R2U para React Native é feita a
 interface R2U {
   init: (params: {customerId: string}) => Promise<void>;
   isActive: (sku: string) => Promise<boolean>;
+  deviceSupportsAR: () => boolean;
   openAR: (sku: string, resize: boolean) => Promise<void>;
   get3DUrl: (sku: string) => Promise<string>;
 }
@@ -17,6 +18,7 @@ interface R2U {
 | ------ | --------- |
 | `init` | inicializa a biblioteca e se conecta com o servidor R2U para a disponibilização dos modelos 3D |
 | `isActive` | indica se o produto está disponível na plataforma para Realidade Aumentada |
+| `deviceSupportsAR` | retorna se o dispositivo suporta Realidade Aumentada (conforme lista oficial [iOS](https://www.apple.com/augmented-reality/) e [Android](https://developers.google.com/ar/discover/supported-devices)) |
 | `openAR` | abre o modelo 3D em realidade aumentada para visualização através da câmera do celular |
 | `get3DUrl` | retorna a URL de visualização do modelo 3D, a ser usada em uma webview tal como [react-native-webview](https://github.com/react-native-community/react-native-webview) |
 
@@ -99,6 +101,7 @@ const sku = 'RE000001';
 const App: () => React$Node = () => {
   const [hasInit, setHasInit] = useState(false);
   const [url3D, setUrl3D] = useState('');
+  const deviceSupportsAR = R2U.deviceSupportsAR();
 
   (async () => {
     if (hasInit) {
@@ -118,9 +121,14 @@ const App: () => React$Node = () => {
     <>
       <View>
         <View>
-        {
-          hasInit && <Button title="Veja em 3D" onPress={() => R2U.openAR(sku, true)}/>
-        }
+          {
+            hasInit &&
+              <Button
+                title={deviceSupportsAR ? "Veja em 3D" : "Dispositivo não suporta Realidade Aumentada"}
+                disabled={!deviceSupportsAR}
+                onPress={() => R2U.openAR(sku, true)}
+              />
+          }
         </View>
         {url3D ? <Webview source={{uri: url3D}} /> : null}
       </View>
@@ -128,9 +136,3 @@ const App: () => React$Node = () => {
   );
 };
 ```
-
-
-### Requisitos
-
-- [iOS 11 ou superior](https://www.apple.com/br/augmented-reality/) para devices selecionados
-- [Android 7 ou superior](https://developers.google.com/ar/discover/supported-devices) para devices selecionados
