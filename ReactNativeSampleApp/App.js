@@ -46,14 +46,17 @@ const App: () => React$Node = () => {
               <Text style={styles.h1}>React Native AR SDK</Text>
             </View>
             <View style={styles.sectionContainer}>
-              {
-                hasInit &&
-                  <Button
-                    title={deviceSupportsAR ? "Veja em Realidade Aumentada" : "Dispositivo não suporta Realidade Aumentada"}
-                    disabled={!deviceSupportsAR}
-                    onPress={() => R2U.openAR(sku, true)}
-                  />
-              }
+              {hasInit && (
+                <Button
+                  title={
+                    deviceSupportsAR
+                      ? 'Veja em Realidade Aumentada'
+                      : 'Dispositivo não suporta Realidade Aumentada'
+                  }
+                  disabled={!deviceSupportsAR}
+                  onPress={() => R2U.openAR(sku, false)}
+                />
+              )}
             </View>
           </View>
         </ScrollView>

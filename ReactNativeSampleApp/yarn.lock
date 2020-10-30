@@ -996,10 +996,10 @@
     "@types/yargs" "^15.0.0"
     chalk "^3.0.0"
 
-"@r2u/react-native-ar-sdk@^0.1.3":
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/@r2u/react-native-ar-sdk/-/react-native-ar-sdk-0.1.3.tgz#75b33b9acb2c063106589145f3ecd935e13b1979"
-  integrity sha512-2vnxJVWSBqCj1h8WPYng7M7p4X3u1kwNQXqel3cLcQ1JjrLR95mIX/H5g2gs7wrwcwEtsbyK1BwiwD+yK3+Rtg==
+"@r2u/react-native-ar-sdk@^0.1.4":
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/@r2u/react-native-ar-sdk/-/react-native-ar-sdk-0.1.4.tgz#6aeaefb306677a7de9ab7ee437970d11a9489d8c"
+  integrity sha512-cnfdxQmmfnw6/V/AV3xpJ8iI3/nOas5p2sKO8RkWvEfitLYa3PMWrg/OE6LvAReEinTywDPG0d7NWhUo0tLBNQ==
 
 "@react-native-community/cli-debugger-ui@^4.9.0":
   version "4.9.0"

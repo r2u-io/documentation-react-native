@@ -9,7 +9,7 @@ interface R2U {
   init: (params: {customerId: string}) => Promise<void>;
   isActive: (sku: string) => Promise<boolean>;
   deviceSupportsAR: () => Promise<boolean>;
-  openAR: (sku: string, resize: boolean) => Promise<void>;
+  openAR: (sku: string, resize?: boolean) => Promise<void>;
   get3DUrl: (sku: string) => Promise<string>;
 }
 ```
@@ -19,7 +19,7 @@ interface R2U {
 | `init` | inicializa a biblioteca e se conecta com o servidor R2U para a disponibilização dos modelos 3D |
 | `isActive` | indica se o produto está disponível na plataforma para Realidade Aumentada |
 | `deviceSupportsAR` | retorna se o dispositivo suporta Realidade Aumentada (conforme lista oficial [iOS](https://www.apple.com/augmented-reality/) e [Android](https://developers.google.com/ar/discover/supported-devices)) |
-| `openAR` | abre o modelo 3D em realidade aumentada para visualização através da câmera do celular |
+| `openAR` | abre o modelo 3D em realidade aumentada para visualização através da câmera do celular (por padrão `resize` falso) |
 | `get3DUrl` | retorna a URL de visualização do modelo 3D, a ser usada em uma webview tal como [react-native-webview](https://github.com/react-native-community/react-native-webview) |
 
 ### ReactNativeSampleApp
@@ -122,14 +122,17 @@ const App: () => React$Node = () => {
     <>
       <View>
         <View>
-          {
-            hasInit &&
-              <Button
-                title={deviceSupportsAR ? "Veja em Realidade Aumentada" : "Dispositivo não suporta Realidade Aumentada"}
-                disabled={!deviceSupportsAR}
-                onPress={() => R2U.openAR(sku, true)}
-              />
-          }
+          {hasInit && (
+            <Button
+              title={
+                deviceSupportsAR
+                  ? 'Veja em Realidade Aumentada'
+                  : 'Dispositivo não suporta Realidade Aumentada'
+              }
+              disabled={!deviceSupportsAR}
+              onPress={() => R2U.openAR(sku, false)}
+            />
+          )}
         </View>
         {url3D ? <Webview source={{uri: url3D}} /> : null}
       </View>
