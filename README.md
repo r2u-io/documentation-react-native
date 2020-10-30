@@ -1,3 +1,11 @@
+<h1 align="center">
+    <a href="https://www.npmjs.com/package/@r2u/react-native-ar-sdk">
+        <img src="https://img.shields.io/badge/version-0.1.3-green">
+    </a>
+    <br/>
+    <img src="https://real2u-public-assets.s3.amazonaws.com/images/logo-r2u.png" title="logo" width="200"/>
+</h1>
+
 # R2U Documentation React Native
 
 A integração do SDK de Realidade Aumentada da R2U para React Native é feita através da biblioteca [@r2u/react-native-ar-sdk](https://www.npmjs.com/package/@r2u/react-native-ar-sdk)
