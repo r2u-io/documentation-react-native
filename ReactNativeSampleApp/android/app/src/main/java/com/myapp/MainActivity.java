@@ -1,4 +1,4 @@
-package com.myapp;
+package com.r2u.documentation;
 
 import com.facebook.react.ReactActivity;
 
@@ -10,6 +10,6 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "MyApp";
+    return "R2UDocumentation";
   }
 }
