@@ -14,25 +14,23 @@ A integração do SDK de Realidade Aumentada da R2U para React Native é feita a
 
 ```typescript
 interface R2U {
-  init: (params: {customerId: string}) => Promise<void>;
-  isActive: (sku: string) => Promise<boolean>;
-  deviceSupportsAR: () => Promise<boolean>;
-  openAR: (sku: string, resize?: boolean) => Promise<void>;
-  get3DUrl: (sku: string) => Promise<string>;
+  init: (params: { customerId: string }) => Promise<void>
+  isActive: (sku: string) => Promise<boolean>
+  deviceSupportsAR: () => Promise<boolean>
+  openAR: (sku: string, resize?: boolean) => Promise<void>
+  get3DUrl: (sku: string) => Promise<string>
 }
 ```
 
-| função | descrição |
-| ------ | --------- |
-| `init` | inicializa a biblioteca e se conecta com o servidor R2U para a disponibilização dos modelos 3D |
-| `isActive` | indica se o produto está disponível na plataforma para Realidade Aumentada |
+| função             | descrição                                                                                                                                                                                              |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `init`             | inicializa a biblioteca e se conecta com o servidor R2U para a disponibilização dos modelos 3D                                                                                                         |
+| `isActive`         | indica se o produto está disponível na plataforma para Realidade Aumentada                                                                                                                             |
 | `deviceSupportsAR` | retorna se o dispositivo suporta Realidade Aumentada (conforme lista oficial [iOS](https://www.apple.com/augmented-reality/) e [Android](https://developers.google.com/ar/discover/supported-devices)) |
-| `openAR` | abre o modelo 3D em realidade aumentada para visualização através da câmera do celular (por padrão `resize` falso) |
-| `get3DUrl` | retorna a URL de visualização do modelo 3D, a ser usada em uma webview tal como [react-native-webview](https://github.com/react-native-community/react-native-webview) |
+| `openAR`           | abre o modelo 3D em realidade aumentada para visualização através da câmera do celular (por padrão `resize` falso)                                                                                     |
+| `get3DUrl`         | retorna a URL de visualização do modelo 3D, a ser usada em uma webview tal como [react-native-webview](https://github.com/react-native-community/react-native-webview)                                 |
 
 ### ReactNativeSampleApp
-
-Na pasta [**ReactNativeSampleApp**](./ReactNativeSampleApp/) é possível ver um aplicativo de exemplo realizando a integração com o SDK
 
 <p float="left">
   <img src="https://real2u-public-assets.s3.amazonaws.com/react-native-ar-sdk/rn-ar-sdk-1.PNG" width="33%"/>
@@ -40,7 +38,7 @@ Na pasta [**ReactNativeSampleApp**](./ReactNativeSampleApp/) é possível ver um
   <img src="https://media.giphy.com/media/Kc85TsAaR3B0ChazPV/giphy.gif" width="33%"/>
 </p>
 
-### Instalação 
+### Instalação
 
 Adicione o módulo no projeto
 
@@ -98,33 +96,33 @@ pod install
 ```tsx
 // outras bibliotecas de estado também podem ser utilizadas para fazer a inicialização do módulo
 // por simplicidade, esta demonstração utiliza react hooks
-import React, {useState} from 'react';
-import {View, Button} from 'react-native';
-import Webview from 'react-native-webview';
-import R2U from '@r2u/react-native-ar-sdk';
+import React, { useState } from 'react'
+import { View, Button } from 'react-native'
+import Webview from 'react-native-webview'
+import R2U from '@r2u/react-native-ar-sdk'
 
-const customerId = '5e8e7580404328000882f4ae';
-const sku = 'RE000001';
+const customerId = '5e8e7580404328000882f4ae'
+const sku = 'RE000001'
 
 const App: () => React$Node = () => {
-  const [hasInit, setHasInit] = useState(false);
-  const [url3D, setUrl3D] = useState('');
-  const [deviceSupportsAR, setDeviceSupportsAR] = useState(false);
+  const [hasInit, setHasInit] = useState(false)
+  const [url3D, setUrl3D] = useState('')
+  const [deviceSupportsAR, setDeviceSupportsAR] = useState(false)
 
-  (async () => {
+  ;(async () => {
     if (hasInit) {
-      return;
+      return
     }
-    setDeviceSupportsAR(await R2U.deviceSupportsAR());
-    await R2U.init({customerId});
-    setHasInit(true);
+    setDeviceSupportsAR(await R2U.deviceSupportsAR())
+    await R2U.init({ customerId })
+    setHasInit(true)
 
     if (!(await R2U.isActive(sku))) {
-      return;
+      return
     }
 
-    setUrl3D(await R2U.get3DUrl(sku));
-  })();
+    setUrl3D(await R2U.get3DUrl(sku))
+  })()
 
   return (
     <>
@@ -142,11 +140,11 @@ const App: () => React$Node = () => {
             />
           )}
         </View>
-        {url3D ? <Webview source={{uri: url3D}} /> : null}
+        {url3D ? <Webview source={{ uri: url3D }} /> : null}
       </View>
     </>
-  );
-};
+  )
+}
 ```
 
 ### Possíveis problemas
