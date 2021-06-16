@@ -37,20 +37,30 @@ const styles = StyleSheet.create({
 
 const App: React.FC = () => {
   const [init, setInit] = useState(false)
+  const [isActive, setIsActive] = useState(false)
   const [uri, setUri] = useState('')
+  const [canOpenAR, setCanOpenAR] = useState(false)
 
   useEffect(() => {
     R2U.init({ customerId }).then(() => {
       setInit(true)
     })
+    R2U.ar.isSupported().then((supported) => setCanOpenAR(supported))
   }, [])
 
   useEffect(() => {
     if (!init) return
+    R2U.sku.isActive(sku).then((active) => {
+      setIsActive(active)
+    })
+  }, [init])
+
+  useEffect(() => {
+    if (!init || !isActive) return
     R2U.viewer.getLink(sku).then((link) => {
       setUri(link)
     })
-  }, [init])
+  }, [isActive])
 
   return (
     <SafeAreaView>
@@ -60,8 +70,9 @@ const App: React.FC = () => {
           {uri ? <WebView style={styles.webview} source={{ uri }} /> : null}
         </View>
         <Button
-          title="AR"
+          title="View in your space"
           onPress={() => R2U.ar.open({ sku, resize: false })}
+          disabled={!init || !isActive || !canOpenAR}
         ></Button>
       </ScrollView>
     </SafeAreaView>
