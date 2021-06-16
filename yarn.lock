@@ -967,10 +967,10 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@r2u/react-native-ar-sdk@^0.1.5":
-  version "0.1.5"
-  resolved "https://registry.yarnpkg.com/@r2u/react-native-ar-sdk/-/react-native-ar-sdk-0.1.5.tgz#44c0492a7dc4f5daaebcf7a321d80edd85401813"
-  integrity sha512-QC0TpyF1P/k0yquLf2FhxzZ+clzwrfRsWTFQmW9YQ0xJDz6HY9AHGvOnr0WizBGSq2sjRG0acm51ww2UpD01Fw==
+"@r2u/react-native-ar-sdk@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@r2u/react-native-ar-sdk/-/react-native-ar-sdk-1.0.0.tgz#0b81624a4e9db9a4aa190909101e20639862c8d9"
+  integrity sha512-un1/irCLC3ctAgDmWPLvqTdARLRY6VikFRT5RZSdGB4mYkeGHSZDQY06+U/JlhSwIqIUDdpOQJBAyspW3te80A==
 
 "@react-native-community/cli-debugger-ui@^5.0.1":
   version "5.0.1"
