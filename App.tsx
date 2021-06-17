@@ -38,8 +38,8 @@ const styles = StyleSheet.create({
 const App: React.FC = () => {
   const [init, setInit] = useState(false)
   const [isActive, setIsActive] = useState(false)
-  const [uri, setUri] = useState('')
   const [canOpenAR, setCanOpenAR] = useState(false)
+  const [uri, setUri] = useState('')
 
   useEffect(() => {
     R2U.init({ customerId }).then(() => {
