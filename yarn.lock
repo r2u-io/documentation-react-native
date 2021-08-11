@@ -967,10 +967,10 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@r2u/react-native-ar-sdk@^2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@r2u/react-native-ar-sdk/-/react-native-ar-sdk-2.0.1.tgz#0c1f9fda97398ea5e03875921eae0a2736fc712e"
-  integrity sha512-GuLy+VB8yI+mlx1jX/IUPZOLGMN6FtYToLfDyHoC4ic2NgYUICFmQSurujQDLpMHe68bMPLQdNbnHH54EXpooA==
+"@r2u/react-native-ar-sdk@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@r2u/react-native-ar-sdk/-/react-native-ar-sdk-2.0.2.tgz#536c4888938327a3a33bf8450da7b9867f852fc6"
+  integrity sha512-jmKGg4yVnMmq38E1RDGZBPV5xn+G0LjFxKVwkjqscoIIbO1f4qhZletxBkDe6dFzM8bZWzi0XdidJVf7ubNDiA==
 
 "@react-native-async-storage/async-storage@^1.15.5":
   version "1.15.5"

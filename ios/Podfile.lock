@@ -59,7 +59,7 @@ PODS:
   - glog (0.3.5)
   - libevent (2.1.12)
   - OpenSSL-Universal (1.1.180)
-  - r-2-u (2.0.1):
+  - r-2-u (2.0.2):
     - React
   - RCT-Folly (2020.01.13.00):
     - boost-for-react-native
@@ -480,7 +480,7 @@ SPEC CHECKSUMS:
   glog: 73c2498ac6884b13ede40eda8228cb1eee9d9d62
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
   OpenSSL-Universal: 1aa4f6a6ee7256b83db99ec1ccdaa80d10f9af9b
-  r-2-u: cc662bedd512954a4c9e854025b01c47d235858e
+  r-2-u: 28b99fba653fe954fbbe7a72cdb30c28e5edef2d
   RCT-Folly: ec7a233ccc97cc556cf7237f0db1ff65b986f27c
   RCTRequired: 6d3e854f0e7260a648badd0d44fc364bc9da9728
   RCTTypeSafety: c1f31d19349c6b53085766359caac425926fafaa
