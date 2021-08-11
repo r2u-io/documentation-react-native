@@ -40,6 +40,7 @@ const App: React.FC = () => {
   const [isActive, setIsActive] = useState(false)
   const [canOpenAR, setCanOpenAR] = useState(false)
   const [uri, setUri] = useState('')
+  const [opened, setOpened] = useState(false)
 
   useEffect(() => {
     R2U.init({ customerId }).then(() => {
@@ -62,6 +63,10 @@ const App: React.FC = () => {
     })
   }, [isActive])
 
+  useEffect(() => {
+    if (opened) R2U.ar.open({ sku, resize: false }).then(() => setOpened(false))
+  }, [opened])
+
   return (
     <SafeAreaView>
       <StatusBar barStyle={'light-content'} />
@@ -70,9 +75,9 @@ const App: React.FC = () => {
           {uri ? <WebView style={styles.webview} source={{ uri }} /> : null}
         </View>
         <Button
-          title="View in your space"
-          onPress={() => R2U.ar.open({ sku, resize: false })}
-          disabled={!init || !isActive || !canOpenAR}
+          title={opened ? 'Loading ...' : 'View in your space'}
+          onPress={() => setOpened(true)}
+          disabled={!init || !isActive || !canOpenAR || opened}
         ></Button>
       </ScrollView>
     </SafeAreaView>
