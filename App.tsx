@@ -10,6 +10,7 @@
 
 import React, { useEffect, useState } from 'react'
 import {
+  Alert,
   Button,
   SafeAreaView,
   ScrollView,
@@ -64,7 +65,14 @@ const App: React.FC = () => {
   }, [isActive])
 
   useEffect(() => {
-    if (opened) R2U.ar.open({ sku, resize: false }).then(() => setOpened(false))
+    if (opened)
+      R2U.ar
+        .open({ sku, resize: false })
+        .then(() => setOpened(false))
+        .catch(() => {
+          Alert.alert('An error has occurred')
+          setOpened(false)
+        })
   }, [opened])
 
   return (
